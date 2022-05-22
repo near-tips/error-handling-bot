@@ -7,7 +7,7 @@ const methodOverride = require('method-override');
 const cors = require('cors');
 const helmet = require('helmet');
 const {ValidationError} = require("express-validation");
-const { port } = require("./config/vars");
+const { port, origin } = require("./config/vars");
 
 // parse body params and attache them to req.body
 app.use(bodyParser.json());
@@ -25,7 +25,7 @@ app.use(helmet());
 
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors({
-    origin: '*', // allow to server to accept request from different origin
+    origin, // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 }));
 
