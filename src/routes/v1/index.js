@@ -8,9 +8,9 @@ const router = express.Router();
 
 router.post('/handleError', validate(handleError, {}, {}), async (req, res) => {
     try {
-        const { error, funcName, service } = req.body;
+        const { error, funcName, service, environment } = req.body;
 
-        await bot.sendMessage(chatId, `Service: ${ service } \nError: ${ error } \nFunction: ${ funcName }`);
+        await bot.sendMessage(chatId, `Service: ${ service } \nError: ${ error } \nFunction: ${ funcName }\n#${environment}`);
 
         res.send('ok')
     } catch (error) {
